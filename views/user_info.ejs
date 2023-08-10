@@ -1,0 +1,32 @@
+<%- include partials/header.ejs %> <%- include partials/top_nav.ejs %>
+
+<main class="container">
+  <h1>User Info</h1>
+
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% userInfo.forEach(user => { %>
+      <tr>
+        <td><%= user[0] %></td>
+        <td><%= user[1] %></td>
+        <td><%= user[2] %></td>
+        <td><%= user[3] %></td>
+        <td><%= user[4] %></td>
+        <td><%= user[5] %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</main>
+
+<%- include partials/bottom_nav.ejs %> <%- include partials/footer.ejs %>

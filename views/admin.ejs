@@ -1,0 +1,80 @@
+<%- include partials/header.ejs %> <%- include partials/top_nav.ejs %>
+
+<main class="container">
+  <div class="front-wallpaper">
+    <h1 style="text-align: center; margin-top: 30px">
+      Welcome back, <%= title %>
+    </h1>
+  </div>
+
+  <br />
+
+  <div>
+    <button id="showUsersButton">Show all users</button>
+    <input
+      type="text"
+      placeholder="Search user_id"
+      class="search-user"
+      style="margin-left: 50px"
+      id="searchInput"
+    />
+    <button id="searchButton">Search</button>
+  </div>
+
+  <table class="user-table" id="userTable" style="display: none">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(product => { %>
+      <tr>
+        <td><%= product[0] %></td>
+        <td><%= product[1] %></td>
+        <td><%= product[2] %></td>
+        <td><%= product[3] %></td>
+        <td><%= product[4] %></td>
+        <td><%= product[5] %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <%- include partials/bottom_nav.ejs %> <%- include partials/footer.ejs %>
+
+  <script>
+    const showUsersButton = document.getElementById("showUsersButton");
+    const userTable = document.getElementById("userTable");
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+
+    showUsersButton.addEventListener("click", () => {
+      if (userTable.style.display === "none") {
+        userTable.style.display = "table";
+      } else {
+        userTable.style.display = "none";
+      }
+    });
+
+    searchButton.addEventListener("click", () => {
+      const userId = searchInput.value;
+      if (userId) {
+        // Redirect to the user info page
+        window.location.href = `/user_info/${userId}`;
+      }
+    });
+  </script>
+</main>

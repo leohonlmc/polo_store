@@ -1,0 +1,48 @@
+<%- include partials/header.ejs %> <%- include partials/top_nav.ejs %>
+
+<main class="container">
+  <div class="front-wallpaper">
+    <h1 style="text-align: center; margin-top: 30px">
+      Welcome to <%= title %>
+    </h1>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 30px">Our products</h2>
+
+  <div class="flex-box">
+    <% products.forEach(product => { %>
+    <div class="product-div">
+      <div class="img"></div>
+      <div class="des">
+        <a
+          class="product-name"
+          href="/polo/<%= product[0] %>"
+          id="<%= product[0] %>"
+          ><%= product[1] %></a
+        >
+
+        <br />
+        <span class="product-price">Price: <%= product[2] %> CAD</span>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+  <form action="/update" method="post">
+    <button type="submit">Increase Retail Prices</button>
+  </form>
+
+  <br />
+
+  <form action="/lower" method="post">
+    <button type="submit">Lower Retail Prices</button>
+  </form>
+</main>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<%- include partials/bottom_nav.ejs %> <%- include partials/footer.ejs %>
